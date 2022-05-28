@@ -3,14 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormEleveComponent } from './shared/form-eleve/form-eleve.component';
+import { FormClasseComponent } from './shared/form-classe/form-classe.component';
+import { EleveComponent } from './pages/eleve/eleve.component';
+import { ClasseComponent } from './pages/classe/classe.component';
+import { DrawerComponent } from './pages/drawer/drawer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormEleveComponent,
+    FormClasseComponent,
+    EleveComponent,
+    ClasseComponent,
+    DrawerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
+    TypeaheadModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
