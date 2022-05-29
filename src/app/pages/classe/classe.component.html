@@ -1,46 +1,69 @@
-<div class="add-classe">
-  <button type="button" class="btn btn-primary" (click)="openModal(template, selectedClasse)">
-    Ajouter une nouvelle classe
-  </button>
-</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nom</th>
-      <th scope="col" colspan="2">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let classe of classes">
-      <th scope="row">{{ classe.id }}</th>
-      <td> {{ classe.nom }} </td>
-      <td><button type="button" class="btn btn-primary" (click)="openModal(template, classe)">
-        Modifier
-      </button></td>
-      <td>
-        <button type="button" class="btn btn-danger" (click)="delete(classe)">
-          Supprimer
+<div class="card mb-3">
+  <div class="card-header">
+    Rechercher ou ajouter une nouvelle classe
+  </div>
+  <div class="card-body">
+    <!-- <h5 class="card-title">Rechercher ou ajouter une nouvelle classe  </h5> -->
+    <div class="card-text">
+      <div class="d-flex justify-content-between">
+        <div class="form-group">
+          <input type="search" name="searh" class="form-control" placeholder="Rechercher une classe">
+        </div>
+        <button type="button" class="btn btn-primary float-end" (click)="openModal(template, selectedClasse)">
+          Ajouter
         </button>
-      </td>
-    </tr>
-  </tbody>
-  <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ formTitle }}</h4>
-      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-        <span aria-hidden="true" class="visually-hidden">&times;</span>
-      </button>
+        </div>
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nom classe</label>
-        <input type="text" class="form-control" id="title" placeholder="Entrer le titre" [formControl]="nom">
-        <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small>
-      </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+   Liste des classe
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let classe of classes">
+            <th scope="row">{{ classe.id }}</th>
+            <td> {{ classe.nom }} </td>
+            <td><button type="button" class="btn btn-primary" (click)="openModal(template, classe)">
+              Modifier
+            </button></td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="delete(classe)">
+                Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">{{ formTitle }}</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+              <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom classe</label>
+              <input type="text" class="form-control" id="title" placeholder="Entrer le titre" [formControl]="nom">
+              <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small>
+            </div>
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-outline-primary me-md-2 mb-2" type="button" (click)="save()">{{btnTitle}}</button>
+          </div>
+        </ng-template>
+      </table>
     </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-      <button class="btn btn-outline-primary me-md-2 mb-2" type="button" (click)="save()">{{btnTitle}}</button>
-    </div>
-  </ng-template>
-</table>
+  </div>
+</div>
+

@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FormClasseComponent,
     EleveComponent,
     ClasseComponent,
-    DrawerComponent
+    DrawerComponent,
+    NotFoundComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

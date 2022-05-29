@@ -87,7 +87,13 @@ export class EleveComponent implements OnInit {
 
   }
   close() {
-    this.nom.reset()
+    this.nom.reset();
+    this.prenom.reset();
+    this.genre.reset();
+    this.dateNaiss.reset();
+    this.lieuNaiss.reset();
+    this.selectedValue = '';
+    this.selectedOption = null;
     this.indexItem = -1;
     this.selectedEleve= <Eleve>{}
     this.modalRef?.hide()
