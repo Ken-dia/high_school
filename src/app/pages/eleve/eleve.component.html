@@ -1,6 +1,6 @@
-<div class="row justify-content-md-center mb-3">
-  <div class="col-8">
-    <div class="card">
+<!-- <div class="row justify-content-md-center mb-3">
+  <div class="col-8"> -->
+    <div class="card mb-3">
       <div class="card-header">
         Rechercher ou inscricre un élève
       </div>
@@ -17,8 +17,8 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 
 <div class="card">
   <div class="card-header">
@@ -26,101 +26,108 @@
   </div>
   <div class="card-body">
     <!-- <h5 class="card-title">Rechercher ou ajouter une nouvelle classe  </h5> -->
-    <div class="card-text"><table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nom</th>
-          <th scope="col">Prénom</th>
-          <th scope="col">Genre</th>
-          <th scope="col">Date de naissance</th>
-          <th scope="col">Lieu de Naissance</th>
-          <th scope="col">Classe</th>
-          <th scope="col" colspan="2">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let eleve of eleves">
-          <th scope="row">{{ eleve.id }}</th>
-          <td> {{ eleve.nom }} </td>
-          <td> {{ eleve.prenom }} </td>
-          <td> {{ eleve.genre }} </td>
-          <td> {{ eleve.dateNaiss}} </td>
-          <td> {{ eleve.lieuNaiss }} </td>
-          <td> {{ eleve.classe.nom }} </td>
-          <td><button type="button" class="btn btn-primary" (click)="openModal(template, eleve)">
-            Modifier
-          </button></td>
-          <td>
-            <button type="button" class="btn btn-danger" (click)="delete(eleve)">
-              Supprimer
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <ng-template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">{{ formTitle }}</h4>
-          <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group mb-3">
-            <label for="exampleInputEmail1">Nom eleve</label>
-            <input type="text" class="form-control" id="nom" placeholder="Entrer le nom" [formControl]="nom">
-            <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small>
-          </div>
-          <div class="form-group mb-3">
-            <label for="exampleInputEmail1">Prénom eleve</label>
-            <input type="text" class="form-control" id="prenom" placeholder="Entrer le prenom" [formControl]="prenom">
-            <small class="text-danger" *ngIf="prenom.errors && showError">Ce champ est obligatoire.!</small>
-          </div>
-          <div class="form-group mb-3">
-            <label for="genre" class="pt-0">Genre: </label>
-            <div class="form-check-inline">
-              <input class="form-check-input" type="radio" name="genre" id="exampleRadios1" value="Masculin"  [formControl]="genre">
-              <label class="form-check-label" for="masculin">
-                Masculin
-              </label>
-            </div>
-            <div class="form-check-inline">
-              <input class="form-check-input" type="radio" name="genre" id="exampleRadios2" value="Féminin" [formControl]="genre">
-              <label class="form-check-label" for="féminin">
-                Féminin
-              </label>
-          </div>
-          </div>
-          <div class="form-group mb-3">
-            <label for="exampleInputEmail1">Date de Naissance</label>
-            <input type="text" class="form-control" id="dateNaiss" placeholder="Entrer la date de Naissance" [formControl]="dateNaiss">
-            <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small>
-          </div>
-          <div class="form-group mb-3">
-            <label for="exampleInputEmail1">Lieu de Naissance</label>
-            <input type="text" class="form-control" id="lieuNaiss" placeholder="Entrer la lieu de Naissance" [formControl]="lieuNaiss">
-            <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small>
-          </div>
-          <div class="form-group mb-3">
-            <label for="Classe">Selectionner une classe</label>
-            <input
-              placeholder="Choisir une classe"
-              [typeahead]="classes"
-              typeaheadOptionField="nom"
-              [typeaheadMinLength]="0"
-              [(ngModel)]="selectedValue"
-              (typeaheadOnSelect)="onSelect($event)"
-              class="form-control"
-            >
-          </div>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button class="btn btn-outline-primary me-md-2 mb-2" type="button" (click)="save()">{{btnTitle}}</button>
-        </div>
-      </ng-template>
-    </table>
+    <div class="card-text">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Lieu de Naissance</th>
+            <th scope="col">Classe</th>
+            <th scope="col" colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let eleve of eleves">
+            <th scope="row">{{ eleve.id }}</th>
+            <td> {{ eleve.nom }} </td>
+            <td> {{ eleve.prenom }} </td>
+            <td> {{ eleve.genre }} </td>
+            <td> {{ eleve.dateNaiss}} </td>
+            <td> {{ eleve.lieuNaiss }} </td>
+            <td> {{ eleve.classe.nom }} </td>
+            <td><button type="button" class="btn btn-primary" (click)="openModal(template, eleve)">
+              Modifier
+            </button></td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="delete(eleve)">
+                Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      
+      </table>
 
     </div>
   </div>
 </div>
 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ formTitle }}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <div class="form-group mb-3">
+        <label for="exampleInputEmail1">Nom eleve</label>
+        <input type="text" class="form-control" id="nom" placeholder="Entrer le nom" formControlName="nom">
+        <!-- <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small> -->
+      </div>
+      <div class="form-group mb-3">
+        <label for="exampleInputEmail1">Prénom eleve</label>
+        <input type="text" class="form-control" id="prenom" placeholder="Entrer le prenom" [formControlName]="'prenom'">
+        <!-- <small class="text-danger" *ngIf="prenom.errors && showError">Ce champ est obligatoire.!</small> -->
+      </div>
+      <div class="form-group mb-3">
+        <label for="genre" class="pt-0">Genre: </label>
+        <div class="form-check-inline">
+          <input class="form-check-input" type="radio" name="genre" id="exampleRadios1" value="Masculin"  [formControlName]="'genre'">
+          <label class="form-check-label" for="masculin">
+            Masculin
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <input class="form-check-input" type="radio" name="genre" id="exampleRadios2" value="Féminin" [formControlName]="'genre'">
+          <label class="form-check-label" for="féminin">
+            Féminin
+          </label>
+      </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="exampleInputEmail1">Date de Naissance</label>
+        <input type="text" class="form-control" id="dateNaiss" placeholder="Entrer la date de Naissance" [formControlName]="'dateNaiss'">
+        <!-- <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small> -->
+      </div>
+      <div class="form-group mb-3">
+        <label for="exampleInputEmail1">Lieu de Naissance</label>
+        <input type="text" class="form-control" id="lieuNaiss" placeholder="Entrer la lieu de Naissance" [formControlName]="'lieuNaiss'">
+        <!-- <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small> -->
+      </div>
+      <div class="form-group mb-3">
+        <label for="Classe">Selectionner une classe</label>
+        <input
+          placeholder="Choisir une classe"
+          [typeahead]="classes"
+          typeaheadOptionField="nom"
+          [typeaheadMinLength]="0"
+          formControlName='classeSelected'
+          (typeaheadOnSelect)="onSelect($event)"
+          class="form-control"
+        >
+        <small class="text-danger" *ngIf="!seletecdValid">classe introuvable !</small>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <button [disabled]="!formGroup.valid" class="btn btn-outline-primary me-md-2 mb-2" type="submit" >{{btnTitle}}</button>
+      </div>
+    </form>
+
+  </div>
+
+</ng-template>
