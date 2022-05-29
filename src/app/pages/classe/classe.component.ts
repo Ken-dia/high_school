@@ -18,6 +18,7 @@ export class ClasseComponent implements OnInit {
   modalRef?: BsModalRef;
   public selectedClasse =  <Classe>{};
   public nom = new FormControl('', Validators.required);
+  public search: string = '';
 
   constructor(private classeService:ClasseService, private modalService: BsModalService) { }
 
@@ -53,9 +54,8 @@ export class ClasseComponent implements OnInit {
       const lastIndex= this.classes.length - 1;
       this.selectedClasse.id = this.classes[lastIndex].id +1;
       this.classes = this.classeService.store(this.selectedClasse)
-      this.modalRef?.hide();
     }
-    this.selectedClasse = <Classe>{}
+    this.close()
   }
   delete(classe: Classe) {
     this.index = this.classes.indexOf(classe);
@@ -63,6 +63,7 @@ export class ClasseComponent implements OnInit {
     this.index = -1
   }
   close() {
+    this.nom.reset()
     this.index = -1;
     this.modalRef?.hide();
     this.selectedClasse = <Classe>{}

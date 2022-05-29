@@ -4,7 +4,7 @@ export class Eleve {
   nom!: string;
   prenom!: string;
   genre!: string;
-  dateNaiss!: string;
+  dateNaiss!: Date;
   lieuNaiss!: string;
   classe!: Classe;
 

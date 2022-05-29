@@ -8,7 +8,10 @@
         <div class="card-text">
           <div class="d-flex justify-content-between">
             <div class="form-group">
-              <input type="search" name="searh" class="form-control" placeholder="Rechercher un élève">
+              <input type="search" name="search" class="form-control" placeholder="Rechercher par nom élève" [(ngModel)]="search">
+            </div>
+            <div class="form-group">
+              <input type="search" name="searchByClasse" class="form-control" placeholder="Rechercher par nom classe" [(ngModel)]="searchByClasse">
             </div>
             <button type="button" class="btn btn-primary float-end" (click)="openModal(template, selectedEleve)">
               Inscription
@@ -41,12 +44,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let eleve of eleves">
+          <tr *ngFor="let eleve of eleves | filterPipe: search | filterByClasse: searchByClasse">
             <th scope="row">{{ eleve.id }}</th>
             <td> {{ eleve.nom }} </td>
             <td> {{ eleve.prenom }} </td>
             <td> {{ eleve.genre }} </td>
-            <td> {{ eleve.dateNaiss}} </td>
+            <td> {{ eleve.dateNaiss | date:'dd/MM/YYYY' }} </td>
             <td> {{ eleve.lieuNaiss }} </td>
             <td> {{ eleve.classe.nom }} </td>
             <td><button type="button" class="btn btn-primary" (click)="openModal(template, eleve)">
@@ -102,7 +105,15 @@
       </div>
       <div class="form-group mb-3">
         <label for="exampleInputEmail1">Date de Naissance</label>
-        <input type="text" class="form-control" id="dateNaiss" placeholder="Entrer la date de Naissance" [formControlName]="'dateNaiss'">
+        <input type="text"
+          placeholder="Selectionner la date de Naissance"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{ isAnimated: true }"
+          [maxDate]="maxDate"
+          [formControlName]="'dateNaiss'"
+        >
+       <!--  <input type="date" class="form-control" id="dateNaiss" placeholder="Entrer la date de Naissance" [formControlName]="'dateNaiss'"> -->
         <!-- <small class="text-danger" *ngIf="nom.errors && showError">Ce champ est obligatoire.!</small> -->
       </div>
       <div class="form-group mb-3">

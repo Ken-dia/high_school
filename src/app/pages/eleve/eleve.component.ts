@@ -24,7 +24,20 @@ export class EleveComponent implements OnInit {
   formGroup!: FormGroup;
   seletecdValid: boolean = true;
   selectedOption: any;
-  constructor(private eleveService: EleveService,private classeService: ClasseService, private modalService: BsModalService, private fb: FormBuilder ) { }
+  public search: string = ''; 
+  public searchByClasse: string = '';
+  //minDate: Date;
+  maxDate: Date;
+  constructor(
+    private eleveService: EleveService,
+    private classeService: ClasseService, 
+    private modalService: BsModalService, 
+    private fb: FormBuilder 
+  ) {
+    this.maxDate = new Date();
+    //Date de naissane au moins 6ans
+    this.maxDate.setDate(this.maxDate.getDate() - 2190);
+  }
 
   ngOnInit(): void {
     this.getClasses()

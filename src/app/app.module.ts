@@ -14,7 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
-
+import { FilterPipePipe } from './shared/pipes/filter-pipe.pipe';
+import { FilterByClassePipe } from './shared/pipes/filter-by-classe.pipe';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     ClasseComponent,
     DrawerComponent,
     NotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    FilterPipePipe,
+    FilterByClassePipe
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     ReactiveFormsModule,
     FormsModule,
     TypeaheadModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
